@@ -1,6 +1,7 @@
 // @ts-check
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
 
 export default class StackedBarHtmlComponent extends Component {
   @service preferences;
@@ -42,5 +43,9 @@ export default class StackedBarHtmlComponent extends Component {
     return this.preferences.normalize === 'year'
       ? 100
       : (this.total / this.args.maxPeerTotal) * 100;
+  }
+
+  @action focusData(year) {
+    this.args.focusData({year, commodity: this.args.data});
   }
 }

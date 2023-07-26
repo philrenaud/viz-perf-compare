@@ -4,7 +4,7 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { alias } from '@ember/object/computed';
 import { tracked } from '@glimmer/tracking';
-
+import { action } from '@ember/object';
 /**
  * @typedef yearTally
  * @property {string} year
@@ -54,5 +54,9 @@ export default class ExportsByCountryController extends Controller {
             }),
         };
       });
+  }
+
+  @action focusData(data) {
+    this.preferences.focusing = data;
   }
 }

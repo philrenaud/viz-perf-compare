@@ -79,31 +79,13 @@
 {{outlet}}
 
 <footer class="app-footer">
-  <a href="https://www.census.gov/foreign-trade/statistics/historical/enduse.html">via https://www.census.gov/foreign-trade/statistics/historical/enduse.html</a>
-  Fun demo links:
-
-  <LinkTo @route="exports-by-country" @query={{hash
-    normalize="year"
-    mode="html-lookup"
-    countries=(array "Antigua and Barbuda" "Bahamas" "Barbados" "Cuba" "Dominica" "Dominican Republic" "Haiti" "Jamaica" "St Kitts and Nevis" "St Lucia" "St Vincent and the Grenadines" "Trinidad and Tobago" )
-    commodities=(array "Alcoholic beverages, excluding wine" "Animal feeds, n.e.c." "Bakery products" "Corn" "Dairy products and eggs" "Food, tobacco machinery" "Fruits, frozen juices" "Meat, poultry, etc." "Nonagricultural foods, etc." "Nuts" "Oilseeds, food oils" "Other foods" "Rice" "Sorghum, barley, oats" "Soybeans" "Vegetables" "Wheat" "Wine, beer, and related products")
-    years=(array 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022)
-  }}>Carribean Food Exports</LinkTo>
-
-  <LinkTo @route="exports-by-country" @query={{hash
-    normalize="year"
-    mode="html-lookup"
-    countries=(array "Argentina" "Bolivia" "Brazil" "Chile" "Colombia" "Ecuador" "Guyana" "Paraguay" "Peru" "Suriname" "Uruguay" "Venezuela")
-    commodities=(array "Agricultural machinery, equipment" "Automotive tires and tubes" "Bodies and chassis for passenger cars" "Engines and engine parts (carburetors, pistons, rings, and valves)" "Excavating machinery" "Industrial engines" "Industrial machines, other" "Industrial rubber products" "Materials handling equipment" "Nonfarm tractors and parts" "Other parts and accessories of vehicles" "Passenger cars, new and used" "Trucks, buses and special purpose vehicles")
-    years=(array 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022)
-  }}>South American Automotive Exports</LinkTo>
-
-  <LinkTo @route="exports-by-country" @query={{hash
-    normalize="year"
-    mode="html-lookup"
-    countries=(array "World Total")
-    commodities=(array "Wheat")
-    years=(array 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022)
-  }}>Reset Query Params</LinkTo>
-
+  {{#if this.preferences.focusing.country}}
+    <h3>Country: {{this.preferences.focusing.country.name}}</h3>
+  {{/if}}
+  {{#if this.preferences.focusing.commodity}}
+    <h3>Commodity: {{this.preferences.focusing.commodity.name}}</h3>
+  {{/if}}
+  {{#if this.preferences.focusing.year}}
+    <h3>Year: {{this.preferences.focusing.year.name}}, {{dollarify this.preferences.focusing.year.value}}</h3>
+  {{/if}}
 </footer>

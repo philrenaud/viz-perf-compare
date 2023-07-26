@@ -6,7 +6,7 @@
   >
   <h3>{{@data.name}}</h3>
   {{#each this.relativeBars as |year|}}
-    <BarSegmentHtml @data={{year}} />
+    <BarSegmentHtml @data={{year}} @focusData={{this.focusData}} />
   {{/each}}
   </ul>
 {{/if}}

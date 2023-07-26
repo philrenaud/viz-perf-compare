@@ -4,7 +4,7 @@
   <h2>{{@data.name}}</h2>
   {{#each this.preferences.commodities as |commodityName|}}
     {{#let (find-by "name" commodityName @data.commodities) as |commodity|}}
-      <StackedBarHtml @data={{commodity}} @maxPeerTotal={{this.maxPeerTotal}} />
+      <StackedBarHtml @data={{commodity}} @maxPeerTotal={{this.maxPeerTotal}} @focusData={{this.focusData}} />
     {{/let}}
   {{/each}}
 </div>

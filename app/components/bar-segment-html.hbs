@@ -5,6 +5,8 @@
     left: {{@data.relativeOffset}}%;
     width: {{@data.relativeValue}}%;
   "
+
+  {{on "mouseover" (fn @focusData @data)}}
 >
   {{!-- <span class="name">{{@data.name}}</span> --}}
   {{!-- <span class="value">{{dollarify @data.value}}</span> --}}

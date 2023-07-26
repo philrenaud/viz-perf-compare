@@ -95,4 +95,6 @@ export default class PreferencesService extends Service {
       this.years = [...this.years, year].sort();
     }
   }
+
+  @tracked focusing = {};
 }

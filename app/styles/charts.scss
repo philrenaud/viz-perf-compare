@@ -70,7 +70,7 @@
         background: #ff0;
         animation: bar-chart 0.5s ease-in-out;
         transform: scale(0);
-        transform-origin: left;
+        transform-origin: bottom left;
         animation-fill-mode: forwards;
 
         // Use a @for loop to generate the animation delays
