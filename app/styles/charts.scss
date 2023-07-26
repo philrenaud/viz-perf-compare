@@ -1,0 +1,112 @@
+.bar-chart {
+  position: relative;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 1rem;
+  border-radius: 12px;
+  display: grid;
+  gap: 2px;
+  grid-auto-rows: min-content;
+
+
+  .bar {
+    display: block;
+    position: relative;
+    height: 30px;
+    transition: 0.2s;
+    margin: 0;
+
+    h3 {
+      font-size: 0.7rem;
+      color: white;
+      background-color: rgba(0,0,0,0.7);
+      font-weight: 300;
+      z-index: 2;
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 90%;
+      line-height: 0.7rem;
+      padding: 2px; margin: 0;
+    }
+
+    .segment {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      overflow: hidden;
+      span {
+        display: inline;
+        font-size: 0.7rem;
+        color: black;
+        background-color: rgba(255,255,255,0.7);
+      }
+    }
+
+  }
+  // li {
+  //   background: #ff0;
+  //   animation: bar-chart 0.5s ease-in-out;
+  //   transform: scale(0);
+  //   transform-origin: left;
+  //   animation-fill-mode: forwards;
+
+  //   // Use a @for loop to generate the animation delays
+  //   @for $i from 1 through 40 {
+  //     &:nth-child(#{$i}) {
+  //       animation-delay: $i * 0.1s;
+  //     }
+  //   }
+  // }
+
+  // Assuming you have multiple ul's in .bar-chart
+  @for $j from 1 through 40 { 
+    ul:nth-child(#{$j}) { 
+      li {
+        background: #ff0;
+        animation: bar-chart 0.5s ease-in-out;
+        transform: scale(0);
+        transform-origin: left;
+        animation-fill-mode: forwards;
+
+        // Use a @for loop to generate the animation delays
+        @for $i from 1 through 40 {
+          &:nth-child(#{$i}) {
+            animation-delay: ($i * 0.05s) + ($j * 0.05s);
+          }
+        }
+      }
+    }
+  }
+
+}
+
+@keyframes bar-chart {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+// D3 categorical-10 colors for segments
+.bar-chart .bar .segment {
+  &[data-name="2013"] { background-color: #1f77b4; }
+  &[data-name="2014"] { background-color: #ff7f0e; }
+  &[data-name="2015"] { background-color: #2ca02c; }
+  &[data-name="2016"] { background-color: #d62728; }
+  &[data-name="2017"] { background-color: #9467bd; }
+  &[data-name="2018"] { background-color: #8c564b; }
+  &[data-name="2019"] { background-color: #e377c2; }
+  &[data-name="2020"] { background-color: #7f7f7f; }
+  &[data-name="2021"] { background-color: #bcbd22; }
+  &[data-name="2022"] { background-color: #17becf; }
+  
+}

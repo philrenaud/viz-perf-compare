@@ -1,0 +1,30 @@
+{{page-title "Exports by Country"}}
+  <h1>U.S. Exports by Country</h1>
+<section class="main">
+  {{#if (eq this.preferences.mode "html")}}
+    {{#each this.data as |country|}}
+      <h2>{{country.name}}</h2>
+      {{#each country.commodities as |commodity|}}
+        <div class="bar-chart">
+          <h3>{{commodity.name}}</h3>
+          <ul>
+          {{#each commodity.years as |datum|}}
+            <li>{{datum.year}}: {{datum.value}}</li>
+          {{/each}}
+          </ul>
+        </div>
+      {{/each}}
+    {{/each}}
+  {{else if (eq this.preferences.mode "html-lookup")}}
+    {{#each this.preferences.countries as |countryName|}}
+      {{#let (find-by "name" countryName this.model) as |country|}}
+      {{!-- ^--- swap "this.model" for "this.data" for nonsense --}}
+        <BarChartHtml @data={{country}} />
+      {{/let}}
+    {{/each}}
+  {{else}}
+    NO
+  {{/if}}
+
+  {{outlet}}
+</section>

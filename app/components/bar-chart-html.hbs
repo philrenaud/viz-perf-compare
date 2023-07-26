@@ -1,0 +1,10 @@
+{{!-- {{#if (eq this.preferences.mode "html")}} --}}
+
+<div class="bar-chart">
+  <h2>{{@data.name}}</h2>
+  {{#each this.preferences.commodities as |commodityName|}}
+    {{#let (find-by "name" commodityName @data.commodities) as |commodity|}}
+      <StackedBarHtml @data={{commodity}} @maxPeerTotal={{this.maxPeerTotal}} />
+    {{/let}}
+  {{/each}}
+</div>

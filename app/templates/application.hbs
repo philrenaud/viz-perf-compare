@@ -1,7 +1,109 @@
-{{page-title "VizPerfCompare"}}
+{{page-title "Viz Perf Comparison in Ember"}}
 
 {{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
+{{!-- <WelcomePage /> --}}
 {{!-- Feel free to remove this! --}}
+<form class="preferences">
+  <Hds::Form::Radio::Group @name="normalize" as |G|>
+    <G.Legend>Normalization</G.Legend>
+    {{!-- <G.Radio::Field
+      checked={{eq this.preferences.normalize "normalize"}}
+      {{on "click" (fn (mut this.preferences.normalize) "commodity")}}
+    as |F|>
+      <F.Label>Commodity-relative</F.Label>
+    </G.Radio::Field> --}}
+    <G.Radio::Field
+      checked={{eq this.preferences.normalize "year"}}
+      {{on "click" (fn (mut this.preferences.normalize) "year")}}
+    as |F|>
+      <F.Label>Year-realtive</F.Label>
+    </G.Radio::Field>
+    <G.Radio::Field
+      checked={{eq this.preferences.normalize "country"}}
+      {{on "click" (fn (mut this.preferences.normalize) "country")}}
+    as |F|>
+      <F.Label>Country-relative</F.Label>
+    </G.Radio::Field>
+  </Hds::Form::Radio::Group>
 
+  <Hds::Form::Radio::Group @name="mode" as |G|>
+    <G.Legend>Mode</G.Legend>
+    {{#each this.preferences.modes as |mode|}}
+    <G.Radio::Field
+      checked={{eq this.preferences.mode mode}}
+      {{on "click" (fn (mut this.preferences.mode) mode)}}
+    as |F|>
+      <F.Label>{{mode}}</F.Label>
+    </G.Radio::Field>
+    {{/each}}
+  </Hds::Form::Radio::Group>
+
+  <Hds::Form::Checkbox::Group @name="countries" as |G|>
+    <G.Legend>Countries</G.Legend>
+    {{#each this.preferences.allCountries as |country|}}
+    <G.Checkbox::Field
+      checked={{includes country this.preferences.countries}}
+      {{on "click" (fn this.preferences.toggleCountry country)}}
+    as |F|>
+      <F.Label>{{country}}</F.Label>
+    </G.Checkbox::Field>
+    {{/each}}
+  </Hds::Form::Checkbox::Group>
+
+  <Hds::Form::Checkbox::Group @name="commodities" as |G|>
+    <G.Legend>Commodities ({{this.preferences.commodities.length}})</G.Legend>
+    {{#each this.preferences.allCommodities as |commodity|}}
+    <G.Checkbox::Field
+      checked={{includes commodity this.preferences.commodities}}
+      {{on "click" (fn this.preferences.toggleCommodity commodity)}}
+    as |F|>
+      <F.Label>{{commodity}}</F.Label>
+    </G.Checkbox::Field>
+    {{/each}}
+  </Hds::Form::Checkbox::Group>
+
+  <Hds::Form::Checkbox::Group @name="years" as |G|>
+    <G.Legend>Years</G.Legend>
+    {{#each this.preferences.allYears as |year|}}
+    <G.Checkbox::Field
+      checked={{includes year this.preferences.years}}
+      {{on "click" (fn this.preferences.toggleYear year)}}
+    as |F|>
+      <F.Label>{{year}}</F.Label>
+    </G.Checkbox::Field>
+    {{/each}}
+  </Hds::Form::Checkbox::Group>
+
+
+</form>
 {{outlet}}
+
+<footer class="app-footer">
+  <a href="https://www.census.gov/foreign-trade/statistics/historical/enduse.html">via https://www.census.gov/foreign-trade/statistics/historical/enduse.html</a>
+  Fun demo links:
+
+  <LinkTo @route="exports-by-country" @query={{hash
+    normalize="year"
+    mode="html-lookup"
+    countries=(array "Antigua and Barbuda" "Bahamas" "Barbados" "Cuba" "Dominica" "Dominican Republic" "Haiti" "Jamaica" "St Kitts and Nevis" "St Lucia" "St Vincent and the Grenadines" "Trinidad and Tobago" )
+    commodities=(array "Alcoholic beverages, excluding wine" "Animal feeds, n.e.c." "Bakery products" "Corn" "Dairy products and eggs" "Food, tobacco machinery" "Fruits, frozen juices" "Meat, poultry, etc." "Nonagricultural foods, etc." "Nuts" "Oilseeds, food oils" "Other foods" "Rice" "Sorghum, barley, oats" "Soybeans" "Vegetables" "Wheat" "Wine, beer, and related products")
+    years=(array 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022)
+  }}>Carribean Food Exports</LinkTo>
+
+  <LinkTo @route="exports-by-country" @query={{hash
+    normalize="year"
+    mode="html-lookup"
+    countries=(array "Argentina" "Bolivia" "Brazil" "Chile" "Colombia" "Ecuador" "Guyana" "Paraguay" "Peru" "Suriname" "Uruguay" "Venezuela")
+    commodities=(array "Agricultural machinery, equipment" "Automotive tires and tubes" "Bodies and chassis for passenger cars" "Engines and engine parts (carburetors, pistons, rings, and valves)" "Excavating machinery" "Industrial engines" "Industrial machines, other" "Industrial rubber products" "Materials handling equipment" "Nonfarm tractors and parts" "Other parts and accessories of vehicles" "Passenger cars, new and used" "Trucks, buses and special purpose vehicles")
+    years=(array 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022)
+  }}>South American Automotive Exports</LinkTo>
+
+  <LinkTo @route="exports-by-country" @query={{hash
+    normalize="year"
+    mode="html-lookup"
+    countries=(array "World Total")
+    commodities=(array "Wheat")
+    years=(array 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022)
+  }}>Reset Query Params</LinkTo>
+
+</footer>

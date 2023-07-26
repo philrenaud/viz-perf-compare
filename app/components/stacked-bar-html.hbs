@@ -1,0 +1,22 @@
+{{#if @data}}
+  <ul class="bar"
+    style="
+      width: {{this.width}}%;
+    "
+  >
+  <h3>{{@data.name}}</h3>
+  {{#each this.relativeBars as |year|}}
+    <BarSegmentHtml @data={{year}} />
+  {{/each}}
+  </ul>
+{{/if}}
+
+
+
+{{!-- 
+  {{#each this.preferences.commodities as |commodityName|}}
+    {{#let (find-by "name" commodityName @data.commodities) as |commodity|}}
+      <StackedBarHtml @data={{commodity}} @maxPeerTotal={{this.maxPeerTotal}} />
+    {{/let}}
+  {{/each}}
+ --}}

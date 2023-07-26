@@ -1,0 +1,32 @@
+.preferences {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 200px;
+  background: #eee;
+  padding: 1rem;
+  height: 100dvh;
+  overflow: auto;
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: minmax(30px 1fr);
+  grid-gap: 2rem;
+  fieldset {
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+footer.app-footer {
+  position: fixed;
+  bottom: 0;
+  width: calc(100dvw - 200px);
+  height: 200px;
+  z-index: 2;
+  background-color: #222;
+  color: white;
+  padding: 1rem;
+  a {
+    color: white;
+  }
+}
