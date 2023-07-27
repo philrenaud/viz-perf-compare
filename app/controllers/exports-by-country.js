@@ -50,7 +50,7 @@ export default class ExportsByCountryController extends Controller {
             .map((c) => {
               return {
                 name: c.name,
-                years: c.years.filter((y) => this.years.includes(+y.year)),
+                years: c.years.filter((y) => this.years.includes(+y.name)),
               };
             }),
         };
