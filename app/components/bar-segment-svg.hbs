@@ -1,1 +1,10 @@
-{{yield}}
+<rect class="segment" data-name={{@data.name}}
+  width="{{@data.relativeValue}}%"
+  x="{{@data.relativeOffset}}%"
+  style="opacity: {{this.opacity}};"
+
+  {{on "mouseover" (fn @focusData @data)}}
+  {{on "mousedown" (action this.compareData @data)}}
+  {{on "mouseup" (action this.compareData null)}}
+
+></rect>;  

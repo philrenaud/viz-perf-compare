@@ -38,9 +38,9 @@ export default class PreferencesService extends Service {
       countries: this.countries,
       years: this.years,
       commodities: this.commodities,
-      mode: this.mode
+      mode: this.mode,
     };
-    
+
     this.router.transitionTo({ queryParams });
   }
 

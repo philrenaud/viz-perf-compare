@@ -15,6 +15,7 @@
     height: 30px;
     transition: 0.2s;
     margin: 0;
+    padding: 0;
 
     h3 {
       font-size: 0.7rem;
@@ -65,10 +66,17 @@
   //   }
   // }
 
+  svg {
+    position: absolute;
+    left: 0;
+    height: 30px;
+    width: 100%;
+  }
+
   // Assuming you have multiple ul's in .bar-chart
   @for $j from 1 through 40 { 
     ul:nth-child(#{$j}) { 
-      li {
+      li, rect {
         background: #ff0;
         animation: bar-chart 0.5s ease-in-out;
         transform: scale(0);
@@ -100,16 +108,16 @@
 
 // D3 categorical-10 colors for segments
 .bar-chart .bar .segment {
-  &[data-name="2013"] { background-color: #1f77b4; }
-  &[data-name="2014"] { background-color: #ff7f0e; }
-  &[data-name="2015"] { background-color: #2ca02c; }
-  &[data-name="2016"] { background-color: #d62728; }
-  &[data-name="2017"] { background-color: #9467bd; }
-  &[data-name="2018"] { background-color: #8c564b; }
-  &[data-name="2019"] { background-color: #e377c2; }
-  &[data-name="2020"] { background-color: #7f7f7f; }
-  &[data-name="2021"] { background-color: #bcbd22; }
-  &[data-name="2022"] { background-color: #17becf; } 
+  &[data-name="2013"] { background-color: #1f77b4; fill: #1f77b4; }
+  &[data-name="2014"] { background-color: #ff7f0e; fill: #ff7f0e; }
+  &[data-name="2015"] { background-color: #2ca02c; fill: #2ca02c; }
+  &[data-name="2016"] { background-color: #d62728; fill: #d62728; }
+  &[data-name="2017"] { background-color: #9467bd; fill: #9467bd; }
+  &[data-name="2018"] { background-color: #8c564b; fill: #8c564b; }
+  &[data-name="2019"] { background-color: #e377c2; fill: #e377c2; }
+  &[data-name="2020"] { background-color: #7f7f7f; fill: #7f7f7f; }
+  &[data-name="2021"] { background-color: #bcbd22; fill: #bcbd22; }
+  &[data-name="2022"] { background-color: #17becf; fill: #17becf; } 
 }
 
 // Preferences legend for year
