@@ -67,7 +67,7 @@
       checked={{includes year this.preferences.years}}
       {{on "click" (fn this.preferences.toggleYear year)}}
     as |F|>
-      <F.Label>{{year}}</F.Label>
+      <F.Label data-year={{year}}>{{year}}</F.Label>
     </G.Checkbox::Field>
     {{/each}}
   </Hds::Form::Checkbox::Group>

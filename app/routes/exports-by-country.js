@@ -80,12 +80,10 @@ export default class ExportsByCountryRoute extends Route {
   async model() {
     console.time('fetch');
     let exports = await dsv(',', '/enduse_exports.csv');
-    console.log('raw', exports);
     console.timeEnd('fetch');
     console.time('clean');
     let data = this.groupDataByCountry(this.cleanData(exports)); // c'mon pipe operators, land already
     console.timeEnd('clean');
-    console.log('cleaned', data);
 
     // TODO: I probably actually want to see commoddities/years pivoted.
 

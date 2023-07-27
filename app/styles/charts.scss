@@ -109,6 +109,17 @@
   &[data-name="2019"] { background-color: #e377c2; }
   &[data-name="2020"] { background-color: #7f7f7f; }
   &[data-name="2021"] { background-color: #bcbd22; }
-  &[data-name="2022"] { background-color: #17becf; }
-  
+  &[data-name="2022"] { background-color: #17becf; } 
 }
+
+// Preferences legend for year
+.hds-form-label[data-year="2013"] { background-color: #1f77b4; padding: 0 0.5rem; color: white;}
+.hds-form-label[data-year="2014"] { background-color: #ff7f0e; padding: 0 0.5rem; color: white;}
+.hds-form-label[data-year="2015"] { background-color: #2ca02c; padding: 0 0.5rem; color: white;}
+.hds-form-label[data-year="2016"] { background-color: #d62728; padding: 0 0.5rem; color: white;}
+.hds-form-label[data-year="2017"] { background-color: #9467bd; padding: 0 0.5rem; color: white;}
+.hds-form-label[data-year="2018"] { background-color: #8c564b; padding: 0 0.5rem; color: white;}
+.hds-form-label[data-year="2019"] { background-color: #e377c2; padding: 0 0.5rem; color: white;}
+.hds-form-label[data-year="2020"] { background-color: #7f7f7f; padding: 0 0.5rem; color: white;}
+.hds-form-label[data-year="2021"] { background-color: #bcbd22; padding: 0 0.5rem; color: white;}
+.hds-form-label[data-year="2022"] { background-color: #17becf; padding: 0 0.5rem; color: white;}

@@ -40,7 +40,6 @@ export default class PreferencesService extends Service {
       commodities: this.commodities,
       mode: this.mode
     };
-    console.log('updatePrefs', queryParams);
     
     this.router.transitionTo({ queryParams });
   }

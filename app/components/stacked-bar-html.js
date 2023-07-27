@@ -6,16 +6,13 @@ import { action } from '@ember/object';
 export default class StackedBarHtmlComponent extends Component {
   @service preferences;
   get relativeBars() {
-    console.log('RELATIVE BAERS REFIRE');
     if (!this.args.data) return [];
     // Return each bar's value as a percentage of the total,
     // plus an offset to account for the previous bars.
-    console.log('dater', this.args.data, this.preferences.years);
     let data = this.preferences.years.map((c) => {
       let year = this.args.data?.years.find((d) => d.name === c);
       return year;
     });
-    console.log('dater2', data);
     let total = this.total;
     let offset = 0;
     return data.map((d) => {
