@@ -1,12 +1,14 @@
 <li class="segment"
-  data-lol="lol lmao"
   data-name={{@data.name}}
   style="
     left: {{@data.relativeOffset}}%;
     width: {{@data.relativeValue}}%;
+    opacity: {{this.opacity}};
   "
 
   {{on "mouseover" (fn @focusData @data)}}
+  {{on "mousedown" (action this.compareData @data)}}
+  {{on "mouseup" (action this.compareData null)}}
 >
   {{!-- <span class="name">{{@data.name}}</span> --}}
   {{!-- <span class="value">{{dollarify @data.value}}</span> --}}

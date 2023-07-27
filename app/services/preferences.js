@@ -97,4 +97,6 @@ export default class PreferencesService extends Service {
   }
 
   @tracked focusing = {};
+
+  @tracked comparedData = null;
 }

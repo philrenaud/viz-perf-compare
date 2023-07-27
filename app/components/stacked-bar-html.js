@@ -48,4 +48,35 @@ export default class StackedBarHtmlComponent extends Component {
   @action focusData(year) {
     this.args.focusData({year, commodity: this.args.data});
   }
+
+  // If data is being compared, move the bar the % to make the segments at that year line up
+  get left() {
+    if (this.preferences.comparedData) {
+      if (this.preferences.normalize === "country") {
+        let thisBarOffset = this.relativeBars.find((d) => d.name === this.preferences.comparedData.name).relativeOffset;
+        return -thisBarOffset * this.width / 100;
+      } else {
+        let thisBarOffset = this.relativeBars.find((d) => d.name === this.preferences.comparedData.name).relativeOffset;
+        return this.preferences.comparedData.relativeOffset - thisBarOffset;
+      }
+    } else {
+      return 0;
+    }
+  }
+
+  get titleStyle() {
+    if (this.preferences.comparedData) {
+      if (this.args.data.name === this.preferences.comparedData.parentName) {
+        return `opacity: 1; color: white; left: ${-this.left}%;`;
+      } else {
+        return "opacity: 0.05; color: white;";
+      }
+    } else if (this.preferences.focusing.commodity) {
+      if (this.args.data.name === this.preferences.focusing.commodity.name) {
+        return "color: black; background-color: white;";
+      }
+    } else {
+      return "opacity: 1; color: white;";
+    }
+  }
 }

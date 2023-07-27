@@ -2,11 +2,14 @@
   <ul class="bar"
     style="
       width: {{this.width}}%;
+      transform: translateX({{this.left}}%);
     "
   >
-  <h3>{{@data.name}}</h3>
+  <h3
+    style={{this.titleStyle}}
+  >{{@data.name}}</h3>
   {{#each this.relativeBars as |year|}}
-    <BarSegmentHtml @data={{year}} @focusData={{this.focusData}} />
+    <BarSegmentHtml @data={{year}} @parentName={{@data.name}} @focusData={{this.focusData}} />
   {{/each}}
   </ul>
 {{/if}}
