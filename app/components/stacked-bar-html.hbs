@@ -8,18 +8,23 @@
   <h3
     style={{this.titleStyle}}
   >{{@data.name}}</h3>
-  {{#each this.relativeBars as |year|}}
-    <BarSegmentHtml @data={{year}} @parentName={{@data.name}} @focusData={{this.focusData}} />
-  {{/each}}
+
+    {{#if (eq this.preferences.mode "html")}}
+
+      {{#each this.relativeBars as |year|}}
+        <BarSegmentHtml @data={{year}} @parentName={{@data.name}} @focusData={{this.focusData}} />
+      {{/each}}
+
+    {{else if (eq this.preferences.mode "html-lookup")}}
+
+      {{#each this.preferences.years as |yearName|}}
+        {{#let (find-by "name" yearName this.relativeBars) as |year|}}
+          <BarSegmentHtml @data={{year}} @parentName={{@data.name}} @focusData={{this.focusData}} />
+        {{/let}}
+      {{/each}}
+
+    {{/if}}
   </ul>
 {{/if}}
 
 
-
-{{!-- 
-  {{#each this.preferences.commodities as |commodityName|}}
-    {{#let (find-by "name" commodityName @data.commodities) as |commodity|}}
-      <StackedBarHtml @data={{commodity}} @maxPeerTotal={{this.maxPeerTotal}} />
-    {{/let}}
-  {{/each}}
- --}}
