@@ -3,8 +3,14 @@
 <LinkTo @route="exports-by-country">&laquo;-- Back to the fun stuff</LinkTo>
 <hr />
 
-<input type="range" min="0" max="10" value={{this.multiplier}} class="slider" id="myRange"
+Multiplier:
+<input type="range" min="1" max="10" value={{this.multiplier}} class="slider"
   {{on "change" (action (mut this.multiplier) value="target.value")}}
+/>
+
+Number of Bars:
+<input type="range" min="1" max="50" value={{this.numberOfDataPoints}} class="slider"
+  {{on "change" (action (mut this.numberOfDataPoints) value="target.value")}}
 />
 
 <div class="bar-chart lookup-example">
@@ -19,6 +25,36 @@
     {{/each}}
   </ul>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="bar-chart lookup-example">
 2. Lookup
