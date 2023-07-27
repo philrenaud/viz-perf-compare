@@ -131,3 +131,23 @@
 .hds-form-label[data-year="2020"] { background-color: #7f7f7f; padding: 0 0.5rem; color: white;}
 .hds-form-label[data-year="2021"] { background-color: #bcbd22; padding: 0 0.5rem; color: white;}
 .hds-form-label[data-year="2022"] { background-color: #17becf; padding: 0 0.5rem; color: white;}
+
+
+
+
+
+// Silly demo
+
+.bar-chart.lookup-example {
+  // display: block;
+  // position: relative;
+  .bar {
+    height: auto;
+    .segment {
+      overflow: visible;
+      height: 30px;
+      display: block;
+      position: relative;
+    }
+  }
+}

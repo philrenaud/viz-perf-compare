@@ -8,4 +8,5 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('exports-by-country');
+  this.route('lookup-example');
 });

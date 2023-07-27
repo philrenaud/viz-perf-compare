@@ -1,0 +1,39 @@
+{{page-title "LookupExample"}}
+
+<LinkTo @route="exports-by-country">&laquo;-- Back to the fun stuff</LinkTo>
+<hr />
+
+<input type="range" min="0" max="10" value={{this.multiplier}} class="slider" id="myRange"
+  {{on "change" (action (mut this.multiplier) value="target.value")}}
+/>
+
+<div class="bar-chart lookup-example">
+1. Direct
+  <ul class="bar">
+    {{#each this.data as |datum|}}
+      <li class="segment"
+        style="width: {{datum}}%;"
+      >
+        {{datum}}
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
+<div class="bar-chart lookup-example">
+2. Lookup
+  <ul class="bar">
+    {{#each (range 0 this.data.length) as |i|}}
+      {{#let (get this.data i) as |datum|}}
+        <li class="segment"
+          style="width: {{datum}}%;"
+        >
+          {{datum}}
+        </li>
+      {{/let}}
+    {{/each}}
+  </ul>
+</div>
+
+
+{{outlet}}
