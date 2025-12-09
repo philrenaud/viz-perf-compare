@@ -36,6 +36,18 @@
     {{/each}}
   </Hds::Form::Radio::Group>
 
+  <Hds::Form::Radio::Group @name="sort" as |G|>
+    <G.Legend>Sort Commodities By</G.Legend>
+    {{#each this.preferences.sortOptions as |option|}}
+    <G.Radio::Field
+      checked={{eq this.preferences.sort option.value}}
+      {{on "click" (fn (mut this.preferences.sort) option.value)}}
+    as |F|>
+      <F.Label>{{option.label}}</F.Label>
+    </G.Radio::Field>
+    {{/each}}
+  </Hds::Form::Radio::Group>
+
   <Hds::Form::Checkbox::Group @name="countries" as |G|>
     <G.Legend>Countries</G.Legend>
     {{#each this.preferences.allCountries as |country|}}

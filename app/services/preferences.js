@@ -26,7 +26,7 @@ const DEFAULT_COMMODITIES = [
 ];
 
 const DEFAULT_YEARS = [
-  2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022,
+  2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024,
 ];
 
 export default class PreferencesService extends Service {
@@ -45,6 +45,20 @@ export default class PreferencesService extends Service {
   }
 
   modes = ['html', 'html-lookup', 'svg', 'canvas'];
+
+  sortOptions = [
+    { value: 'alpha-asc', label: 'Alphabetical (A-Z)' },
+    { value: 'alpha-desc', label: 'Alphabetical (Z-A)' },
+    { value: 'total-desc', label: 'Total Value (High to Low)' },
+    { value: 'total-asc', label: 'Total Value (Low to High)' },
+    { value: 'growth-desc', label: 'Growth Rate (High to Low)' },
+    { value: 'growth-asc', label: 'Growth Rate (Low to High)' },
+  ];
+
+  /**
+   * @type {("alpha-asc" | "alpha-desc" | "total-desc" | "total-asc" | "growth-desc" | "growth-asc")}
+   */
+  @tracked sort = 'alpha-asc';
 
   /**
    * @type {("html" | "html-lookup" | "svg" | "canvas")}

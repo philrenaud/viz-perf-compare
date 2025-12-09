@@ -14,6 +14,7 @@ export default class StackedBarSvgComponent extends Component {
       return year;
     });
     let total = this.total;
+    if (!total) return [];
     let offset = 0;
     return data.map((d) => {
       if (!d) return;

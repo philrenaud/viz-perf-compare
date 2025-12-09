@@ -4,16 +4,16 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
 const YEAR_COLORS = {
-  2013: '#1f77b4',
-  2014: '#ff7f0e',
-  2015: '#2ca02c',
-  2016: '#d62728',
-  2017: '#9467bd',
-  2018: '#8c564b',
-  2019: '#e377c2',
-  2020: '#7f7f7f',
-  2021: '#bcbd22',
-  2022: '#17becf',
+  2015: '#1f77b4',
+  2016: '#ff7f0e',
+  2017: '#2ca02c',
+  2018: '#d62728',
+  2019: '#9467bd',
+  2020: '#8c564b',
+  2021: '#e377c2',
+  2022: '#7f7f7f',
+  2023: '#bcbd22',
+  2024: '#17becf',
 };
 
 export default class StackedBarCanvasComponent extends Component {
@@ -29,6 +29,7 @@ export default class StackedBarCanvasComponent extends Component {
       return year;
     });
     let total = this.total;
+    if (!total) return [];
     let offset = 0;
     return data.map((d) => {
       if (!d) return;
