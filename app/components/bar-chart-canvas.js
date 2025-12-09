@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 
-export default class BarChartSvgComponent extends Component {
+export default class BarChartCanvasComponent extends Component {
   @service preferences;
 
   get maxPeerTotal() {

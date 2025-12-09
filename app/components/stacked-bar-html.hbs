@@ -12,14 +12,14 @@
     {{#if (eq this.preferences.mode "html")}}
 
       {{#each this.relativeBars as |year|}}
-        <BarSegmentHtml @data={{year}} @parentName={{@data.name}} @focusData={{this.focusData}} />
+        <BarSegmentHtml @data={{year}} @parentName={{@data.name}} @barWidth={{this.width}} @focusData={{this.focusData}} />
       {{/each}}
 
     {{else if (eq this.preferences.mode "html-lookup")}}
 
       {{#each this.preferences.years as |yearName|}}
         {{#let (find-by "name" yearName this.relativeBars) as |year|}}
-          <BarSegmentHtml @data={{year}} @parentName={{@data.name}} @focusData={{this.focusData}} />
+          <BarSegmentHtml @data={{year}} @parentName={{@data.name}} @barWidth={{this.width}} @focusData={{this.focusData}} />
         {{/let}}
       {{/each}}
 

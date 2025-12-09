@@ -2,7 +2,7 @@
   <h2>{{@data.name}}</h2>
   {{#each this.sortedCommodities as |commodityName|}}
     {{#let (find-by "name" commodityName @data.commodities) as |commodity|}}
-      <StackedBarSvg @data={{commodity}} @maxPeerTotal={{this.maxPeerTotal}} @focusData={{this.focusData}} />
+      <StackedBarCanvas @data={{commodity}} @maxPeerTotal={{this.maxPeerTotal}} @focusData={{this.focusData}} />
     {{/let}}
   {{/each}}
 </div>

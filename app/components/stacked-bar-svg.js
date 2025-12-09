@@ -14,6 +14,7 @@ export default class StackedBarSvgComponent extends Component {
       return year;
     });
     let total = this.total;
+    if (!total) return [];
     let offset = 0;
     return data.map((d) => {
       if (!d) return;
@@ -49,15 +50,22 @@ export default class StackedBarSvgComponent extends Component {
   // If data is being compared, move the bar the % to make the segments at that year line up
   get left() {
     if (this.preferences.comparedData) {
+      let thisBarOffset = this.relativeBars.find(
+        (d) => d.name === this.preferences.comparedData.name
+      )?.relativeOffset;
+      if (thisBarOffset === undefined) return 0;
+
       if (this.preferences.normalize === 'country') {
-        let thisBarOffset = this.relativeBars.find(
-          (d) => d.name === this.preferences.comparedData.name
-        ).relativeOffset;
-        return (-thisBarOffset * this.width) / 100;
+        // Calculate absolute positions (as % of container)
+        let clickedAbsolutePos =
+          (this.preferences.comparedData.relativeOffset *
+            this.preferences.comparedData.barWidth) /
+          100;
+        let thisAbsolutePos = (thisBarOffset * this.width) / 100;
+        let desiredMove = clickedAbsolutePos - thisAbsolutePos;
+        // translateX uses % of element width, so convert container % to element %
+        return (desiredMove / this.width) * 100;
       } else {
-        let thisBarOffset = this.relativeBars.find(
-          (d) => d.name === this.preferences.comparedData.name
-        ).relativeOffset;
         return this.preferences.comparedData.relativeOffset - thisBarOffset;
       }
     } else {
@@ -76,6 +84,7 @@ export default class StackedBarSvgComponent extends Component {
       if (this.args.data.name === this.preferences.focusing.commodity.name) {
         return 'color: black; background-color: white;';
       }
+      return 'opacity: 1; color: white;';
     } else {
       return 'opacity: 1; color: white;';
     }

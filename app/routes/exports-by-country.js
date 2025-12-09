@@ -10,8 +10,6 @@ import { inject as service } from '@ember/service';
  * @property {string} CTY_CODE
  * @property {string} COMM_DESC
  * @property {string} END_USE
- * @property {string} value_13
- * @property {string} value_14
  * @property {string} value_15
  * @property {string} value_16
  * @property {string} value_17
@@ -20,6 +18,9 @@ import { inject as service } from '@ember/service';
  * @property {string} value_20
  * @property {string} value_21
  * @property {string} value_22
+ * @property {string} value_23
+ * @property {string} value_24
+ * 
  */
 
 export default class ExportsByCountryRoute extends Route {
@@ -27,8 +28,6 @@ export default class ExportsByCountryRoute extends Route {
 
   cleanData(data) {
     let yearColumns = [
-      'value_13',
-      'value_14',
       'value_15',
       'value_16',
       'value_17',
@@ -37,6 +36,8 @@ export default class ExportsByCountryRoute extends Route {
       'value_20',
       'value_21',
       'value_22',
+      'value_23',
+      'value_24',
     ];
     let cleanData = data.map((d) => {
       let cleanDatum = {};

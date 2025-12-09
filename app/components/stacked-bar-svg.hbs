@@ -13,7 +13,7 @@
       {{#each this.preferences.years as |yearName|}}
         {{#let (find-by "name" yearName this.relativeBars) as |year|}}
           {{!-- <rect class="segment" data-name={{year.name}} width='100%' height='25'></rect>;   --}}
-          <BarSegmentSvg @data={{year}} @parentName={{@data.name}} @focusData={{this.focusData}} />
+          <BarSegmentSvg @data={{year}} @parentName={{@data.name}} @barWidth={{this.width}} @focusData={{this.focusData}} />
         {{/let}}
       {{/each}}
     </g>

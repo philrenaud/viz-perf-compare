@@ -1,6 +1,5 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import { action } from '@ember/object';
 
 export default class BarSegmentHtmlComponent extends Component {
   @service preferences;
@@ -11,6 +10,7 @@ export default class BarSegmentHtmlComponent extends Component {
         relativeOffset: data.relativeOffset,
         offset: data.offset,
         parentName: this.args.parentName,
+        barWidth: this.args.barWidth,
       });
     } else {
       this.preferences.set('comparedData', null);

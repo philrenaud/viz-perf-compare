@@ -26,13 +26,21 @@ import { action } from '@ember/object';
 export default class ExportsByCountryController extends Controller {
   @service preferences;
 
-  queryParams = ['countries', 'years', 'commodities', 'mode', 'normalize'];
+  queryParams = [
+    'countries',
+    'years',
+    'commodities',
+    'mode',
+    'normalize',
+    'sort',
+  ];
 
   @alias('preferences.countries') countries;
   @alias('preferences.commodities') commodities;
   @alias('preferences.years') years;
   @alias('preferences.mode') mode;
   @alias('preferences.normalize') normalize;
+  @alias('preferences.sort') sort;
 
   /**
    * @type {export[]}

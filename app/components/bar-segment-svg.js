@@ -10,6 +10,7 @@ export default class BarSegmentSvgComponent extends Component {
         relativeOffset: data.relativeOffset,
         offset: data.offset,
         parentName: this.args.parentName,
+        barWidth: this.args.barWidth,
       });
     } else {
       this.preferences.set('comparedData', null);
