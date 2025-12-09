@@ -1,0 +1,20 @@
+{{#if @data}}
+  <ul class="bar"
+    style="
+      width: {{this.width}}%;
+      transform: translateX({{this.left}}%);
+    "
+  >
+    <h3 style={{this.titleStyle}}>{{@data.name}}</h3>
+    <canvas
+      width="1000"
+      height="30"
+      style="position: absolute; left: 0; width: 100%; height: 30px;"
+      {{did-insert this.setupCanvas}}
+      {{did-update this.updateCanvas this.relativeBars this.preferences.comparedData}}
+      {{on "mousemove" this.handleMouseMove}}
+      {{on "mousedown" this.handleMouseDown}}
+      {{on "mouseup" this.handleMouseUp}}
+    ></canvas>
+  </ul>
+{{/if}}

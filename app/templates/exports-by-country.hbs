@@ -91,6 +91,12 @@
         <BarChartSvg @data={{country}} @focusData={{this.focusData}} />
       {{/let}}
     {{/each}}
+  {{else if (eq this.preferences.mode "canvas")}}
+    {{#each this.preferences.countries as |countryName|}}
+      {{#let (find-by "name" countryName this.model) as |country|}}
+        <BarChartCanvas @data={{country}} @focusData={{this.focusData}} />
+      {{/let}}
+    {{/each}}
   {{else}}
     Listen, I've been pretty busy lately.
   {{/if}}
